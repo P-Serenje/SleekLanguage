@@ -1,3 +1,5 @@
+//SLEEK LANGUAGE GRAMMER
+
 grammar Sleek;
 
 @header {
