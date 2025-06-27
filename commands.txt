@@ -3,22 +3,22 @@ Build & Execution Commands (with Explanations)
 1. Compile ANTLR-generated Lexer/Parser
    Compiles `.java` files in `src/antlr/` using `antlr.jar`:
 
-   **javac -cp ".\:lib/antlr.jar" src/antlr/\*.java**
+   javac -cp ".\:lib/antlr.jar" src/antlr/\*.java
 
 2. (Optional) Visualize Parse Tree
    Launches ANTLR TestRig GUI to inspect the parse tree for `test.txt`, using the root rule `program`:
 
-   **java -cp ".\:lib/antlr.jar\:src" org.antlr.v4.gui.TestRig antlr.Sleek program -gui test.txt**
+   java -cp ".\:lib/antlr.jar\:src" org.antlr.v4.gui.TestRig antlr.Sleek program -gui test.txt
 
 3. Compile Compiler Source
    Compiles the ANTLR parser and main compiler class to the `out/` directory:
 
-   **javac -cp lib/antlr.jar -d out src/antlr/\*.java src/compiler/SleekLLVMCompiler.java**
+   javac -cp lib/antlr.jar -d out src/antlr/\*.java src/compiler/SleekLLVMCompiler.java
 
 4. Link and Optimize Executable
    Links the generated LLVM IR (`test.ll`) with runtime support and applies optimizations:
 
-   **clang test.ll runtime.c -O2 -o myprog**
+   clang test.ll runtime.c -O2 -o myprog
 
 Typical Workflow
 
@@ -26,9 +26,9 @@ Typical Workflow
 2. If the grammar is updated, recompile the parser and compiler (Steps 1 and 3).
 3. Generate LLVM IR:
 
-   **java -cp "out\:lib/antlr.jar" compiler.SleekLLVMCompiler program.sleek**
+   java -cp "out\:lib/antlr.jar" compiler.SleekLLVMCompiler program.sleek
 
 4. Link the IR into an executable (Step 4).
 5. Run the program:
 
-   **./myprog**
+   ./myprog
