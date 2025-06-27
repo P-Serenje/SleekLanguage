@@ -1,63 +1,96 @@
-Sleek Programming Language
-==========================
+=====================================================================
+                      SLEEK PROGRAMMING LANGUAGE
+=====================================================================
 
-Sleek is a simple, statically-typed programming language featuring clean syntax with familiar control structures and I/O operations.
+Sleek is a simple, type-inferred programming language with clean syntax
+and familiar control structures, compiling to efficient LLVM IR.
 
-Compilation Methods
--------------------
+Key Features:
+- Type inference (no explicit type declarations needed)
+- Automatic type resolution based on usage
+- Static type checking at compile-time
+- Familiar C-like syntax with minimal boilerplate
 
-1. Compiling via IDE (Eclipse/IntelliJ)
-   - Import the SleekCompiler project
-   - Set up Run Configuration:
-     * Main class: compiler.SleekCompiler
-     * Program arguments: path/to/program.sleek
-   - Run the compiler to generate LLVM IR (.ll file)
+--------------------------------------------------------------
+1. COMPILER REQUIREMENTS
+--------------------------------------------------------------
+- Java JDK 8 or later
+- LLVM toolchain (llc, clang)
+- ANTLR 4 runtime (included in project)
 
-2. Compiling via Terminal
-   - Navigate to project directory:
-     cd /path/to/Sleek/src
-   - Compile using:
-     java compiler.SleekCompiler program.sleek
-   - Generates program.ll in root project directory
+--------------------------------------------------------------
+2. COMPILING SLEEK PROGRAMS
+--------------------------------------------------------------
 
-3. Building Executable from LLVM IR
-   - First generate native object file:
-     llc -filetype=obj program.ll -o program.o
-   - Then link with system libraries:
-     clang program.o -o program
-   - Run executable:
-     ./program
+A. Using an IDE (Eclipse/IntelliJ):
+   1. Import the SleekCompiler project
+   2. Create Run Configuration:
+      - Main Class: compiler.SleekCompiler
+      - Arguments: path/to/your_program.sleek
+   3. Run to generate LLVM IR (.ll file)
 
-Complete Workflow Example
-------------------------
-1. Create hello.sleek:
-   func main() {
-       print("Hello World!");
-       return 0;
-   }
+B. Using Command Line:
+   java compiler.SleekCompiler program.sleek
+   -> Generates program.ll in project root directory
 
-2. Compile to LLVM IR:
-   java compiler.SleekCompiler hello.sleek
+C. Building Executables:
+   1. Generate object file:
+      llc -filetype=obj program.ll -o program.o
+   2. Link executable:
+      clang program.o -o program
+   3. Run:
+      ./program
 
-3. Generate Executable:
-   llc -filetype=obj hello.ll -o hello.o
-   clang hello.o -o hello
+--------------------------------------------------------------
+3. TYPE SYSTEM (USAGE-BASED INFERENCE)
+--------------------------------------------------------------
+Examples of automatic type resolution:
+- x = 4 + 5       // inferred as int
+- y = "a" + "b"   // inferred as string
+- z = true        // inferred as bool
 
-4. Run Program:
-   ./hello
+The compiler will reject:
+- 4 + "text"      // type mismatch error
+- true * 5        // invalid operation
 
-Output:
-Hello World!
+--------------------------------------------------------------
+4. EXAMPLE WORKFLOW
+--------------------------------------------------------------
 
-Error Handling
--------------
+A. Create hello.sleek:
+----------------------------------
+func main() {
+    message = "Hello " + "World!"  // string inferred
+    print(message);
+    return 0;
+}
+----------------------------------
+
+B. Compile steps:
+1. java compiler.SleekCompiler hello.sleek  (creates hello.ll)
+2. llc -filetype=obj hello.ll -o hello.o
+3. clang hello.o -o hello
+4. ./hello
+
+Output: Hello World!
+
+--------------------------------------------------------------
+5. ERROR HANDLING
+--------------------------------------------------------------
 Compiler reports:
-- Syntax errors during parsing
-- Type mismatches in semantic analysis
-- Code generation failures
+- Syntax errors (line numbers, unexpected tokens)
+- Type errors (invalid operations, mismatched types)
+- Semantic errors (undefined variables/functions)
 
-Next Steps
----------
+--------------------------------------------------------------
+6. NEXT STEPS
+--------------------------------------------------------------
 - Add Makefile for build automation
 - Implement package distribution
-- Expand standard library
+- Expand standard library functions
+- Add more type inference examples to documentation
+
+=====================================================================
+Note: Sleek's type system automatically resolves types based on usage
+      while maintaining compile-time type safety.
+=====================================================================
