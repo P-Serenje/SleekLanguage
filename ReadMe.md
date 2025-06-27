@@ -39,9 +39,7 @@ func main() {
 }
 ----------------------------------------
 
-==========================================
-          KEY CHARACTERISTICS
-==========================================
+=========KEY CHARACTERISTICS=========
 
 ▼ Type Inference
 x = 42          // int
@@ -53,9 +51,8 @@ z = x > 10      // bool
 • Type mismatches
 • Undefined variables
 
-==========================================
-            NEXT STEPS
-==========================================
+=========NEXT STEPS=========
+
 - Build system integration
 - Standard library expansion
 - Enhanced debugging
