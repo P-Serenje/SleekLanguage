@@ -1,0 +1,8 @@
+serenje@serenje-ThinkPad-T470p:~/eclipse-workspace/Sleek$ javac -cp ".:lib/antlr.jar" src/antlr/*.java
+serenje@serenje-ThinkPad-T470p:~/eclipse-workspace/Sleek$ java -cp ".:lib/antlr.jar:src" org.antlr.v4.gui.TestRig antlr.Sleek program -gui test.txt
+
+
+javac   -cp lib/antlr.jar   -d out   src/antlr/*.java   src/compiler/SleekLLVMCompiler.java
+
+clang test.ll runtime.c -O2 -o myprog
+
