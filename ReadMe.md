@@ -1,6 +1,4 @@
-=====================================================================
                       SLEEK PROGRAMMING LANGUAGE
-=====================================================================
 
 Sleek is a simple, type-inferred programming language with clean syntax
 and familiar control structures, compiling to efficient LLVM IR.
