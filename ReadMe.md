@@ -1,17 +1,18 @@
-===============SLEEK LANGUAGE===============
-===============
+==========================================
+              SLEEK LANGUAGE
+==========================================
 
 A minimal, type-inferred language compiling to LLVM IR
 
 ■ Features
-• Clean C-like syntax
+• Clean, expression-oriented syntax
 • Automatic type inference
 • Compile-time type checking
-• Simple I/O operations
+• Flexible I/O operations
 
-===============           
-GETTING STARTED
-===============
+==========================================
+           GETTING STARTED
+==========================================
 
 ▼ Requirements
 - Java JDK 8+
@@ -28,33 +29,35 @@ GETTING STARTED
 3. Run:
    $ ./program
 
-▼ Example (hello.sleek):
+▼ Example (demo.sleek):
 ----------------------------------------
-func main() {
-
-    msg = "Hello " + "World!"
-    print(msg)
-    return 0
-    
+func add(a, b) {
+    return a + b
 }
+
+x = input()
+y = input()
+z = add(x, y)
+print(z)
 ----------------------------------------
 
-========= **KEY CHARACTERISTICS** 
-=========
+==========================================
+          KEY CHARACTERISTICS
+==========================================
 
 ▼ Type Inference
-x = 42          // int
+x = input()     // type determined by usage
 y = "text"      // string
-z = x > 10      // bool
+z = true        // bool
 
 ▼ Error Checking
 • Syntax errors
-• Type mismatches
-• Undefined variables
+• Type mismatches (e.g., "text" + 42)
+• Undefined variables (e.g., using 'm' without declaration)
 
-========= **NEXT STEPS** 
-=========
-
+==========================================
+            NEXT STEPS
+==========================================
 - Build system integration
 - Standard library expansion
-- Enhanced debugging
+- Enhanced debugging support
