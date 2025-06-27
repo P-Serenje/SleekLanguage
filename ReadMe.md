@@ -31,9 +31,11 @@ GETTING STARTED
 ▼ Example (hello.sleek):
 ----------------------------------------
 func main() {
+
     msg = "Hello " + "World!"
     print(msg)
     return 0
+    
 }
 ----------------------------------------
 
