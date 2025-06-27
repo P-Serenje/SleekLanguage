@@ -1,4 +1,4 @@
-===============SLEEK LANGUAGE
+===============SLEEK LANGUAGE===============
 ===============
 
 A minimal, type-inferred language compiling to LLVM IR
