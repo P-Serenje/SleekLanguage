@@ -1,51 +1,34 @@
-### ▼ Build & Execution Commands (with Explanations)
+Build & Execution Commands (with Explanations)
 
-#### 1. Compile ANTLR-generated Lexer/Parser
+1. Compile ANTLR-generated Lexer/Parser
+   Compiles `.java` files in `src/antlr/` using `antlr.jar`:
 
-Compiles `.java` files in `src/antlr/` using `antlr.jar`:
+   **javac -cp ".\:lib/antlr.jar" src/antlr/\*.java**
 
-```bash
-javac -cp ".:lib/antlr.jar" src/antlr/*.java
-```
+2. (Optional) Visualize Parse Tree
+   Launches ANTLR TestRig GUI to inspect the parse tree for `test.txt`, using the root rule `program`:
 
-#### 2. (Optional) Visualize Parse Tree
+   **java -cp ".\:lib/antlr.jar\:src" org.antlr.v4.gui.TestRig antlr.Sleek program -gui test.txt**
 
-Launches ANTLR TestRig GUI to inspect parse tree for `test.txt` (root rule: `program`):
+3. Compile Compiler Source
+   Compiles the ANTLR parser and main compiler class to the `out/` directory:
 
-```bash
-java -cp ".:lib/antlr.jar:src" org.antlr.v4.gui.TestRig antlr.Sleek program -gui test.txt
-```
+   **javac -cp lib/antlr.jar -d out src/antlr/\*.java src/compiler/SleekLLVMCompiler.java**
 
-#### 3. Compile Compiler Source
+4. Link and Optimize Executable
+   Links the generated LLVM IR (`test.ll`) with runtime support and applies optimizations:
 
-Compiles ANTLR parser and main compiler class to the `out/` directory:
+   **clang test.ll runtime.c -O2 -o myprog**
 
-```bash
-javac -cp lib/antlr.jar -d out src/antlr/*.java src/compiler/SleekLLVMCompiler.java
-```
+Typical Workflow
 
-#### 4. Link and Optimize Executable
-
-Links LLVM IR (`test.ll`) with runtime support and optimizes output:
-
-```bash
-clang test.ll runtime.c -O2 -o myprog
-```
-
----
-
-### ▼ Typical Workflow
-
-1. Edit `.sleek` source file
-2. If grammar changed, recompile (Steps 1 & 3)
+1. Edit the `.sleek` source file.
+2. If the grammar is updated, recompile the parser and compiler (Steps 1 and 3).
 3. Generate LLVM IR:
 
-   ```bash
-   java -cp "out:lib/antlr.jar" compiler.SleekLLVMCompiler program.sleek
-   ```
-4. Link executable (Step 4)
-5. Run:
+   **java -cp "out\:lib/antlr.jar" compiler.SleekLLVMCompiler program.sleek**
 
-   ```bash
-   ./myprog
-   ```
+4. Link the IR into an executable (Step 4).
+5. Run the program:
+
+   **./myprog**
