@@ -35,17 +35,17 @@ func add(a, b)
 
 {
 
-    return a + b
+    return a + b;
 
 }
 
-x = input()
+x = input();
 
-y = input()
+y = input();
 
-z = add(x, y)
+z = add(x, y);
 
-print(z)
+print(z);
 
 ----------------------------------------
 
