@@ -1,6 +1,6 @@
-==========================================
+==============================
               SLEEK LANGUAGE
-==========================================
+==============================
 
 A minimal, type-inferred language compiling to LLVM IR
 
@@ -10,9 +10,9 @@ A minimal, type-inferred language compiling to LLVM IR
 • Compile-time type checking
 • Simple I/O operations
 
-==========================================
+==============================
            GETTING STARTED
-==========================================
+==============================
 
 ▼ Requirements
 - Java JDK 8+
