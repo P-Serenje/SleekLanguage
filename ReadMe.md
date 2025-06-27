@@ -31,7 +31,8 @@ A minimal, type-inferred language compiling to LLVM IR
 
 ▼ Example (demo.sleek):
 ----------------------------------------
-func add(a, b) {
+func add(a, b) 
+{
     return a + b
 }
 
@@ -39,6 +40,7 @@ x = input()
 y = input()
 z = add(x, y)
 print(z)
+
 ----------------------------------------
 
 ==
@@ -46,8 +48,11 @@ print(z)
 ==
 
 ▼ Type Inference
+
 x = input()     // type determined by usage
+
 y = "text"      // string
+
 z = true        // bool
 
 ▼ Error Checking
