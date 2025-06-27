@@ -32,8 +32,11 @@ A minimal, type-inferred language compiling to LLVM IR
 ▼ Example (demo.sleek):
 ----------------------------------------
 func add(a, b) 
+
 {
+
     return a + b
+
 }
 
 x = input()
