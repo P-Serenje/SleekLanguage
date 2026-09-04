@@ -7,6 +7,7 @@ A minimal, type-inferred language compiling to LLVM IR
 • Automatic type inference
 • Compile-time type checking
 • Flexible I/O operations
+
 ==
            GETTING STARTED
 ==
@@ -34,6 +35,7 @@ y = input();
 z = add(x, y);
 print(z);
 ----------------------------------------
+
 ==
           KEY CHARACTERISTICS
 ==
